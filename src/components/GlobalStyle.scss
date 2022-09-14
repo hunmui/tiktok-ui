@@ -1,0 +1,13 @@
+@import 'normalize.css';
+@import url('https://use.typekit.net/waz4tsx.css');
+:root {
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: ibm-plex-sans, sans-serif;
+    text-rendering: optimizeLegibility;
+    line-height: 1.5;
+    font-size: 1.6rem;
+}
