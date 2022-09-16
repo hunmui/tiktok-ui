@@ -1,4 +1,4 @@
-import Header from './Header';
+export { default as HeaderOnly } from './HeaderOnly';
 
 function HeaderOnly({ children }) {
     return (

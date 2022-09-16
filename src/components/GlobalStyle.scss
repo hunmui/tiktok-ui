@@ -1,13 +1,32 @@
 @import 'normalize.css';
 @import url('https://use.typekit.net/waz4tsx.css');
 :root {
+    --default-height-header: 60px;
+    --default-width-content: 1150px;
+    --text-color: #333;
+    --search-border-radius: 92px;
+    --search-height: 46px;
+    --search-top-space: 9px;
+    --search-button-width: 52px;
 }
 * {
     box-sizing: border-box;
+    margin: 0;
 }
 body {
     font-family: ibm-plex-sans, sans-serif;
     text-rendering: optimizeLegibility;
     line-height: 1.5;
     font-size: 1.6rem;
+    color: var(--text-color);
+}
+button,
+input,
+[tabindex] {
+    outline: none;
+    border: none;
+}
+a[href] {
+    color: var(--text-color);
+    text-decoration: none;
 }
