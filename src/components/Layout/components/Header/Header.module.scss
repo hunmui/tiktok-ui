@@ -12,6 +12,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0 var(--default-layout-horizontal-space);
 }
 
 .logo {
@@ -93,8 +94,10 @@
         background-color: rgba(22, 24, 35, 0.06);
     }
 }
-
-.action {
+//Action
+.actions {
+    display: flex;
+    align-items: center;
 }
 
 .more-btn {
@@ -104,4 +107,24 @@
     height: 20px;
     padding: 6px;
     background-color: transparent;
+    cursor: pointer;
+}
+
+.action-btn {
+    width: 32px;
+    height: 32px;
+    color: rgba(22, 24, 35, 1);
+    font-size: 26px;
+    background-color: transparent;
+    padding: 3px 3px 0px 3px;
+    cursor: pointer;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    background-size: cover;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 24px;
 }

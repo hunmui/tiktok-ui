@@ -10,8 +10,14 @@ import {
     faEarthAsia,
     faCircleQuestion,
     faKeyboard,
+    faCloudUpload,
+    faUser,
+    faCoins,
+    faGear,
+    faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
-import Tippy from '@tippyjs/react/headless';
+import Tippy from '@tippyjs/react';
+import HeadlessTippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css'; // optional
 import { useEffect, useState } from 'react';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
@@ -24,6 +30,21 @@ const MenuItems = [
     {
         icon: <FontAwesomeIcon icon={faEarthAsia} />,
         title: 'English',
+        children: {
+            title: 'language',
+            data: [
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'VietNamese',
+                },
+            ],
+        },
     },
     {
         icon: <FontAwesomeIcon icon={faCircleQuestion} />,
@@ -39,11 +60,42 @@ const MenuItems = [
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
 
+    const currentUser = true;
+
+    const handleOnchage = (menuItem) => {
+        console.log(menuItem);
+    };
+
     useEffect(() => {
         setTimeout(() => {
             setSearchResult([]);
         }, 0);
     }, []);
+
+    const MenuUser = [
+        {
+            icon: <FontAwesomeIcon icon={faUser} />,
+            title: 'View Profile',
+            to: '/@hoaa',
+        },
+        {
+            icon: <FontAwesomeIcon icon={faCoins} />,
+            title: 'Get Coin',
+            to: '/coin',
+        },
+        {
+            icon: <FontAwesomeIcon icon={faGear} />,
+            title: 'Setting',
+            to: '/setting',
+        },
+        ...MenuItems,
+        {
+            icon: <FontAwesomeIcon icon={faSignOut} />,
+            title: 'logout',
+            to: '/logout',
+            separate: true,
+        },
+    ];
 
     return (
         <header className={cs('wrapper')}>
@@ -51,7 +103,7 @@ function Header() {
                 <div className={cs('logo')}>
                     <img src={images.logo} alt="Tik Tok" />
                 </div>
-                <Tippy
+                <HeadlessTippy
                     interactive
                     visible={searchResult.length > 0}
                     render={(attrs) => (
@@ -76,15 +128,34 @@ function Header() {
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
                     </div>
-                </Tippy>
-
-                <div className={cs('action')}>
-                    <Button text>Upload</Button>
-                    <Button primary>Log In</Button>
-                    <Menu items={MenuItems}>
-                        <button className={cs('more-btn')}>
-                            <FontAwesomeIcon icon={faEllipsisV} />
-                        </button>
+                </HeadlessTippy>
+                <div className={cs('actions')}>
+                    {currentUser ? (
+                        <>
+                            <Tippy display={[0, 200]} content="Upload Video" placement="bottom">
+                                <button className={cs('action-btn')}>
+                                    <FontAwesomeIcon icon={faCloudUpload} />
+                                </button>
+                            </Tippy>
+                        </>
+                    ) : (
+                        <>
+                            <Button text>Upload</Button>
+                            <Button primary>Log In</Button>
+                        </>
+                    )}
+                    <Menu items={currentUser ? MenuUser : MenuItems} onChange={handleOnchage}>
+                        {currentUser ? (
+                            <img
+                                src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/feef791b23e820bb05dc9c30efb798d7~c5_300x300.webp?x-expires=1663495200&x-signature=tCFN%2FZ1DfLeHKLfr7XANSpXJQ2Y%3D"
+                                className={cs('user-avatar')}
+                                alt="Nguyễn Văn A"
+                            ></img>
+                        ) : (
+                            <button className={cs('more-btn')}>
+                                <FontAwesomeIcon icon={faEllipsisV} />
+                            </button>
+                        )}
                     </Menu>
                 </div>
             </div>
