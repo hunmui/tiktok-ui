@@ -10,11 +10,11 @@ import {
     faEarthAsia,
     faCircleQuestion,
     faKeyboard,
-    faCloudUpload,
     faUser,
     faCoins,
     faGear,
     faSignOut,
+    faAdd,
 } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react';
 import HeadlessTippy from '@tippyjs/react/headless';
@@ -24,6 +24,8 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/menu';
+import Image from '~/components/Image';
+import { MessageIcon, EmailIcon } from '~/components/Icons';
 
 const cs = classNames.bind(styles);
 const MenuItems = [
@@ -132,9 +134,21 @@ function Header() {
                 <div className={cs('actions')}>
                     {currentUser ? (
                         <>
-                            <Tippy display={[0, 200]} content="Upload Video" placement="bottom">
+                            <Button
+                                className={'Upload-btn'}
+                                leftIcon={<FontAwesomeIcon icon={faAdd}></FontAwesomeIcon>}
+                                text
+                            >
+                                Upload
+                            </Button>
+                            <Tippy display={[0, 200]} content="Message" placement="bottom">
                                 <button className={cs('action-btn')}>
-                                    <FontAwesomeIcon icon={faCloudUpload} />
+                                    <MessageIcon />
+                                </button>
+                            </Tippy>
+                            <Tippy display={[0, 200]} content="MailBox" placement="bottom">
+                                <button className={cs('action-btn')}>
+                                    <EmailIcon />
                                 </button>
                             </Tippy>
                         </>
@@ -146,11 +160,12 @@ function Header() {
                     )}
                     <Menu items={currentUser ? MenuUser : MenuItems} onChange={handleOnchage}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/feef791b23e820bb05dc9c30efb798d7~c5_300x300.webp?x-expires=1663495200&x-signature=tCFN%2FZ1DfLeHKLfr7XANSpXJQ2Y%3D"
                                 className={cs('user-avatar')}
-                                alt="Nguyễn Văn A"
-                            ></img>
+                                alt={'Nguyễn Văn A'}
+                                falseBack={'https://fullstack.edu.vn/static/media/f8-icon.18cd71cfcfa33566a22b.png'}
+                            ></Image>
                         ) : (
                             <button className={cs('more-btn')}>
                                 <FontAwesomeIcon icon={faEllipsisV} />

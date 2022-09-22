@@ -9,7 +9,7 @@
     --search-top-space: 9px;
     --search-button-width: 52px;
     --primary: rgba(254, 44, 85, 1);
-    --font: ibm-plex-sans, sans-serif;
+    --font: 'Proxima-Nova-Regular', sans-serif;
     --default-layout-horizontal-space: 24px;
 }
 * {
@@ -17,7 +17,7 @@
     margin: 0;
 }
 body {
-    font-family: ibm-plex-sans, sans-serif;
+    font-family: 'Proxima-Nova-Regular', sans-serif;
     text-rendering: optimizeLegibility;
     line-height: 1.5;
     font-size: 1.6rem;
@@ -32,6 +32,27 @@ input,
 a[href] {
     color: var(--text-color);
     text-decoration: none;
+}
+//font
+@font-face {
+    font-family: Proxima-Nova-Regular;
+    src: url('/assets/Fonts/Proxima-Nova-Regular.woff2');
+    font-weight: 400;
+}
+@font-face {
+    font-family: ProximaNova-Semibold;
+    src: url('/assets/Fonts/ProximaNova-Semibold.woff2');
+    font-weight: 600;
+}
+@font-face {
+    font-family: Proxima-Nova-Semibold;
+    src: url('/assets/Fonts/Proxima-Nova-Semibold.woff2');
+    font-weight: 700;
+}
+@font-face {
+    font-family: sofiapro-bold;
+    src: url('/assets/Fonts/sofiapro-bold.woff');
+    font-weight: 700;
 }
 
 //custom tippy tooltip
