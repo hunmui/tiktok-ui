@@ -5,7 +5,7 @@
     --default-width-content: 1150px;
     --text-color: #333;
     --search-border-radius: 92px;
-    --search-height: 46px;
+    --search-height: 48px;
     --search-top-space: 9px;
     --search-button-width: 52px;
     --primary: rgba(254, 44, 85, 1);
@@ -20,7 +20,7 @@ body {
     font-family: 'Proxima-Nova-Regular', sans-serif;
     text-rendering: optimizeLegibility;
     line-height: 1.5;
-    font-size: 1.6rem;
+    font-size: 16px;
     color: var(--text-color);
 }
 button,
